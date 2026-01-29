@@ -32,7 +32,7 @@ const TodoList = () => {
     }
 
     const updateListArray = (obj, index) => {
-        const tempObj = taskList;
+        var tempObj = taskList;
         tempObj[index] = obj;
         localStorage.setItem("temList", JSON.stringify(tempObj))
         SetTaskList(tempObj);

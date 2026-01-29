@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CreateTask = ({ modal, toggle, save }) => {
+const EditTask = ({ modal, toggle, updateTask, taskObj }) => {
     const [taskName, SetTaskName] = useState("");
     const [desciption, SetDescription] = useState("");
+    useEffect(() => {
+        SetTaskName(taskObj.Name);
+        SetDescription(taskObj.Desciption);
+    }, [taskObj])
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'taskName') {
@@ -12,16 +16,16 @@ const CreateTask = ({ modal, toggle, save }) => {
             SetDescription(value);
         }
     }
-    const handleTask = (e) => {
-        const tempObj = {};
-        tempObj["Name"] = taskName;
-        tempObj["Desciption"] = desciption;
-        save(tempObj);
+    const handleTask = () => {
+        var obj = taskObj;
+        obj["Name"] = taskName;
+        obj["Desciption"] = desciption;
+        updateTask(obj);
     }
     return (
         <div>
             <Modal isOpen={modal} toggle={toggle} >
-                <ModalHeader toggle={toggle}>Create Task</ModalHeader>
+                <ModalHeader toggle={toggle}>Update Task</ModalHeader>
                 <ModalBody>
                     <form>
                         <div className="form-group">
@@ -35,7 +39,7 @@ const CreateTask = ({ modal, toggle, save }) => {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handleTask}>Create</Button>{' '}
+                    <Button color="primary" onClick={(e)=>handleTask(e)}>Update</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
@@ -43,4 +47,4 @@ const CreateTask = ({ modal, toggle, save }) => {
     )
 }
 
-export default CreateTask;
+export default EditTask;
