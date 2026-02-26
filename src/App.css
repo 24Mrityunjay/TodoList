@@ -1,12 +1,44 @@
-.App{
+.main-container{
   width: 100vw;
+  position: absolute;
+  top: 0px;
 }
 
 .header{
-  height: 25vh;
+  /* height: 5vh; */
   width: 100%;
   background-color: #e9eef6;
-  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+.todo-btn {box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(42, 41, 41);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(105, 105, 105, 0.3) !important;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.todo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.todo-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.todo-btn:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.5);
+  outline-offset: 3px;
 }
 
 .card-wrapper{
